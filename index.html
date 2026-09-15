@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Jogo educativo de tabuleiro sobre Luteranismo e Calvinismo"
+    >
+
+    <title>Caminhos da Reforma</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                CR
+            </div>
+
+            <div class="brand-text">
+
+                <strong>
+                    Caminhos da Reforma
+                </strong>
+
+                <span>
+                    Luteranismo e Calvinismo
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="themeToggle"
+            class="icon-button"
+            type="button"
+            aria-label="Alternar tema"
+        >
+            ☾
+        </button>
+
+    </header>
+
+
+
+    <main>
+
+        <!-- =====================================================
+             TELA INICIAL
+        ====================================================== -->
+
+        <section
+            id="startScreen"
+            class="start-screen"
+        >
+
+            <div class="start-card">
+
+                <span class="eyebrow">
+                    Jogo educativo
+                </span>
+
+                <h1>
+                    Caminhos da
+                    <span>Reforma</span>
+                </h1>
+
+                <p class="start-description">
+
+                    Dois movimentos religiosos percorrem a Europa
+                    disputando influência, conhecimento e expansão.
+
+                    Avance pelo tabuleiro, enfrente acontecimentos
+                    históricos e responda questões sobre Luteranismo
+                    e Calvinismo.
+
+                </p>
+
+
+                <div class="movement-preview">
+
+                    <article class="movement-card luther-card">
+
+                        <div class="movement-symbol">
+                            L
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Movimento
+                            </span>
+
+                            <h3>
+                                Luteranismo
+                            </h3>
+
+                            <p>
+                                Origem histórica:
+                                Wittenberg.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <div class="versus">
+                        ×
+                    </div>
+
+
+                    <article class="movement-card calvin-card">
+
+                        <div class="movement-symbol outline">
+                            C
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Movimento
+                            </span>
+
+                            <h3>
+                                Calvinismo
+                            </h3>
+
+                            <p>
+                                Centro de expansão:
+                                Genebra.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <div class="intro-grid">
+
+                    <article class="intro-item">
+
+                        <span class="intro-number">
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Lance o dado
+                            </h3>
+
+                            <p>
+                                Cada movimento avança pelas casas
+                                do tabuleiro.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="intro-item">
+
+                        <span class="intro-number">
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Conquiste influência
+                            </h3>
+
+                            <p>
+                                Cidades, documentos, imprensa e
+                                perguntas concedem pontos.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="intro-item">
+
+                        <span class="intro-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Vença pelo conhecimento
+                            </h3>
+
+                            <p>
+                                Chegar primeiro ajuda, mas vence
+                                quem possuir maior influência.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <button
+                    id="startButton"
+                    class="primary-button large-button"
+                    type="button"
+                >
+                    Iniciar partida
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             JOGO
+        ====================================================== -->
+
+        <section
+            id="gameScreen"
+            class="game-screen hidden"
+        >
+
+            <div class="game-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Disputa de influência
+                    </span>
+
+                    <h2>
+                        Caminhos da Reforma
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="gameStatus"
+                    class="game-status"
+                >
+                    Partida em andamento
+                </div>
+
+            </div>
+
+
+
+            <div class="game-layout">
+
+
+                <!-- =================================================
+                     ÁREA PRINCIPAL
+                ================================================== -->
+
+                <div class="game-main">
+
+
+                    <!-- JOGADORES -->
+
+                    <div class="players-header">
+
+
+                        <article
+                            id="playerCard0"
+                            class="player-card active"
+                        >
+
+                            <div class="player-card-top">
+
+                                <div class="token-example luther-token">
+                                    L
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Jogador 1
+                                    </span>
+
+                                    <h3>
+                                        Luteranismo
+                                    </h3>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="player-score">
+
+                                <span>
+                                    Influência
+                                </span>
+
+                                <strong id="influence0">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <article
+                            id="playerCard1"
+                            class="player-card"
+                        >
+
+                            <div class="player-card-top">
+
+                                <div class="token-example calvin-token">
+                                    C
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Jogador 2
+                                    </span>
+
+                                    <h3>
+                                        Calvinismo
+                                    </h3>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="player-score">
+
+                                <span>
+                                    Influência
+                                </span>
+
+                                <strong id="influence1">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!-- TABULEIRO -->
+
+                    <div class="board-shell">
+
+                        <div class="board-title">
+
+                            <div>
+
+                                <span>
+                                    Europa, século XVI
+                                </span>
+
+                                <strong>
+                                    Rota de influência
+                                </strong>
+
+                            </div>
+
+                            <div class="board-number">
+                                36 casas
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="board"
+                            class="board"
+                        ></div>
+
+                    </div>
+
+
+
+                    <!-- CONTROLE DE DADO -->
+
+                    <div class="dice-panel">
+
+                        <div class="turn-info">
+
+                            <span>
+                                Turno atual
+                            </span>
+
+                            <strong id="turnName">
+                                Luteranismo
+                            </strong>
+
+                            <small id="turnOrigin">
+                                Wittenberg
+                            </small>
+
+                        </div>
+
+
+                        <div class="dice-area">
+
+                            <div
+                                id="dice"
+                                class="dice"
+                            >
+                                ?
+                            </div>
+
+                            <button
+                                id="rollButton"
+                                class="primary-button"
+                                type="button"
+                            >
+                                Lançar dado
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PAINEL LATERAL
+                ================================================== -->
+
+                <aside class="side-panel">
+
+
+                    <div class="panel-label">
+                        Estado da partida
+                    </div>
+
+
+                    <div class="turn-card">
+
+                        <span>
+                            Jogando agora
+                        </span>
+
+                        <strong id="sidebarTurn">
+                            Luteranismo
+                        </strong>
+
+                        <small id="sidebarPosition">
+                            Casa 1 de 36
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="stats-grid">
+
+                        <article class="stat-card">
+
+                            <span>
+                                Luteranismo
+                            </span>
+
+                            <strong id="correct0">
+                                0
+                            </strong>
+
+                            <small>
+                                respostas corretas
+                            </small>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <span>
+                                Calvinismo
+                            </span>
+
+                            <strong id="correct1">
+                                0
+                            </strong>
+
+                            <small>
+                                respostas corretas
+                            </small>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <div class="panel-section">
+
+                        <div class="section-heading">
+                            Casas especiais
+                        </div>
+
+
+                        <div class="legend">
+
+                            <div>
+                                <span class="legend-symbol">
+                                    Q
+                                </span>
+
+                                Pergunta
+                            </div>
+
+
+                            <div>
+                                <span class="legend-symbol">
+                                    B
+                                </span>
+
+                                Debate
+                            </div>
+
+
+                            <div>
+                                <span class="legend-symbol">
+                                    I
+                                </span>
+
+                                Imprensa
+                            </div>
+
+
+                            <div>
+                                <span class="legend-symbol">
+                                    D
+                                </span>
+
+                                Documento
+                            </div>
+
+
+                            <div>
+                                <span class="legend-symbol">
+                                    C
+                                </span>
+
+                                Cidade
+                            </div>
+
+
+                            <div>
+                                <span class="legend-symbol">
+                                    P
+                                </span>
+
+                                Política
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="panel-section">
+
+                        <div class="section-heading">
+                            Últimos acontecimentos
+                        </div>
+
+                        <div
+                            id="gameLog"
+                            class="game-log"
+                        ></div>
+
+                    </div>
+
+
+                    <button
+                        id="restartButton"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Reiniciar partida
+                    </button>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         MODAL DE PERGUNTA
+    ====================================================== -->
+
+    <div
+        id="questionModal"
+        class="modal-overlay hidden"
+    >
+
+        <div class="modal question-modal">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span
+                        id="questionTypeLabel"
+                        class="eyebrow"
+                    >
+                        Desafio histórico
+                    </span>
+
+                    <h2 id="questionModalTitle">
+                        Luteranismo e Calvinismo
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="questionBadge"
+                    class="modal-badge"
+                >
+                    Q
+                </div>
+
+            </div>
+
+
+
+            <span
+                id="questionCategory"
+                class="category"
+            >
+                Conhecimento
+            </span>
+
+
+            <h3
+                id="questionText"
+                class="question-text"
+            ></h3>
+
+
+            <div
+                id="questionOptions"
+                class="question-options"
+            ></div>
+
+
+
+            <div
+                id="answerFeedback"
+                class="answer-feedback hidden"
+            >
+
+                <strong id="feedbackTitle">
+                </strong>
+
+                <p id="feedbackText">
+                </p>
+
+            </div>
+
+
+
+            <button
+                id="continueQuestionButton"
+                class="primary-button hidden"
+                type="button"
+            >
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MODAL DE EVENTO
+    ====================================================== -->
+
+    <div
+        id="eventModal"
+        class="modal-overlay hidden"
+    >
+
+        <div class="modal event-modal">
+
+            <div
+                id="eventSymbol"
+                class="event-large-symbol"
+            >
+                D
+            </div>
+
+
+            <span
+                id="eventCategory"
+                class="eyebrow"
+            >
+                Documento histórico
+            </span>
+
+
+            <h2 id="eventTitle">
+                Evento
+            </h2>
+
+
+            <p id="eventText">
+            </p>
+
+
+            <div
+                id="eventEffect"
+                class="event-effect"
+            >
+                +10 influência
+            </div>
+
+
+            <button
+                id="continueEventButton"
+                class="primary-button"
+                type="button"
+            >
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FIM DE JOGO
+    ====================================================== -->
+
+    <div
+        id="gameOverModal"
+        class="modal-overlay hidden"
+    >
+
+        <div class="modal game-over-modal">
+
+            <span class="eyebrow">
+                Fim da partida
+            </span>
+
+            <h2 id="winnerTitle">
+                Vitória
+            </h2>
+
+            <p id="winnerDescription">
+            </p>
+
+
+            <div class="final-results">
+
+                <article>
+
+                    <span>
+                        Luteranismo
+                    </span>
+
+                    <strong id="finalInfluence0">
+                        0
+                    </strong>
+
+                    <small>
+                        pontos de influência
+                    </small>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        Calvinismo
+                    </span>
+
+                    <strong id="finalInfluence1">
+                        0
+                    </strong>
+
+                    <small>
+                        pontos de influência
+                    </small>
+
+                </article>
+
+            </div>
+
+
+            <button
+                id="playAgainButton"
+                class="primary-button"
+                type="button"
+            >
+                Jogar novamente
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
